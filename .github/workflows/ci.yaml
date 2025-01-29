@@ -46,7 +46,7 @@ jobs:
         paths: reports/*.xml
 
     - name: Upload Artifacts
-      uses: actions/upload-artifact@v2.2.4
+      uses: actions/upload-artifact@v3
       if: failure()
       with:
         name: test-screenshots
