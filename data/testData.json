@@ -1,0 +1,58 @@
+[
+  {
+    "testCaseName": "Test Case 1 - Web Application - Implement user authentication",
+    "projectName": "Web Application",
+    "taskName": "Implement user authentication",
+    "columnName": "To Do",
+    "tags": ["Feature", "High Priority"]
+  },
+  {
+    "testCaseName": "Test Case 2 - Web Application - Fix navigation bug",
+    "projectName": "Web Application",
+    "taskName": "Fix navigation bug",
+    "columnName": "To Do",
+    "tags": ["Bug"]
+  },
+  {
+    "testCaseName": "Test Case 3 - Web Application - Design system updates",
+    "projectName": "Web Application",
+    "taskName": "Design system updates",
+    "columnName": "In Progress",
+    "tags": ["Design"]
+  },
+  {
+    "testCaseName": "Test Case 3/1 - Web Application - API integration",
+    "projectName": "Web Application",
+    "taskName": "API integration",
+    "columnName": "Review",
+    "tags": ["Feature", "High Priority"]
+  },
+  {
+    "testCaseName": "Test Case 3/2 - Web Application - Update documentation",
+    "projectName": "Web Application",
+    "taskName": "Update documentation",
+    "columnName": "Done",
+    "tags": ["Feature"]
+  },
+  {
+    "testCaseName": "Test Case 4 - Mobile Application - Push notification system",
+    "projectName": "Mobile Application",
+    "taskName": "Push notification system",
+    "columnName": "To Do",
+    "tags": ["Feature"]
+  },
+  {
+    "testCaseName": "Test Case 5 - Mobile Application - Offline mode",
+    "projectName": "Mobile Application",
+    "taskName": "Offline mode",
+    "columnName": "In Progress",
+    "tags": ["Feature", "High Priority"]
+  },
+  {
+    "testCaseName": "Test Case 6 - Mobile Application - App icon design",
+    "projectName": "Mobile Application",
+    "taskName": "App icon design",
+    "columnName": "Done",
+    "tags": ["Design"]
+  }
+]

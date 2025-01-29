@@ -1,0 +1,33 @@
+# Ignore node modules
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# Ignore environment variables
+.env
+.env.local
+.env.development
+.env.production
+.env.test
+
+# Ignore Playwright test results
+playwright-report/
+test-results/
+
+# Ignore log files
+*.log
+logs/
+*.log*
+
+# Ignore IDE files (VSCode, JetBrains, etc.)
+.vscode/
+.idea/
+*.iml
+
+# Ignore dependency lock files (if using Yarn or npm)
+yarn.lock
+package-lock.json
+
+# Ignore OS-specific files
+.DS_Store
+Thumbs.db
