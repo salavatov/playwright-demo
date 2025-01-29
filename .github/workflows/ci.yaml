@@ -40,10 +40,11 @@ jobs:
     - name: Debug Environment Variables
       run: cat .env
     
+    - name: Load Environment Variables from .env
+      run: export $(grep -v '^#' .env | xargs)
+    
     - name: Run Cucumber Tests
       run: npx cucumber-js
-      env:
-        PLAYWRIGHT_ENV: ${{ secrets.PLAYWRIGHT_ENV }}
 
     - name: Create test summary
       uses: test-summary/action@v2.0
