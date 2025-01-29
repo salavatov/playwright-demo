@@ -97,9 +97,8 @@ npx cucumber-js
 
 ### 2️⃣ Run Tests with Allure Report
 ```bash
-npm run test:allure
-npx allure generate ./allure-results --clean
-npx allure open ./allure-report
+npx cucumber-js
+allure serve allure-results
 ```
 
 ### 3️⃣ Run Playwright Tests Without Gherkin
