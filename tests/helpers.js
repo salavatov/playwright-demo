@@ -11,6 +11,14 @@ require("dotenv").config();
 const userPhone = process.env.PLAYWRIGHT_USER;
 const password = process.env.PLAYWRIGHT_PASS;
 
+if (!userPhone || !password) {
+  throw new Error(`
+    Environment variables PLAYWRIGHT_USER and PLAYWRIGHT_PASS are missing!
+    For local development: Create a .env file with these variables.
+    In CI/CD: Ensure secrets are configured in GitHub Actions.
+  `);
+}
+
 async function login(page) {
   // 1. Go to the login page
   await page.goto(process.env.BASE_URL || 'https://animated-gingersnap-8cf7f2.netlify.app/');

@@ -11,25 +11,15 @@ jobs:
     
     strategy:
       matrix:
-        node-version: [18.x]
+        node-version: [20.x]
         test-group: [1, 2]
 
     steps:
-    - name: Git clone
-      uses: actions/checkout@v3
+    - name: Checkout code
+      uses: actions/checkout@v4
 
-    - name: Write the .env file
-      run: |
-          echo '${{ secrets.PLAYWRIGHT_ENV }}' | tr '\r' '\n' > .env
-
-    - name: Debug Environment Variables
-      run: cat .env
-
-    - name: Load Environment Variables from .env
-      run: export $(grep -v '^#' .env | xargs)
-
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v3
+    - name: Setup Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v4
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
@@ -37,23 +27,34 @@ jobs:
     - name: Install dependencies
       run: npm ci
 
-    - name: Ensure screenshots directory exists
+    - name: Create screenshots directory
       run: mkdir -p ./screenshots
 
     - name: Generate Feature File
       run: node generateFeature.js
-    
+
     - name: Run Cucumber Tests
       run: npx cucumber-js
+      env:
+        PLAYWRIGHT_USER: ${{ secrets.PLAYWRIGHT_USER }}
+        PLAYWRIGHT_PASS: ${{ secrets.PLAYWRIGHT_PASS }}
+        BASE_URL: ${{ secrets.BASE_URL }}
 
-    - name: Create test summary
+    - name: Upload Test Results
+      uses: actions/upload-artifact@v4
+      if: always()
+      with:
+        name: test-results
+        path: reports/*.xml
+
+    - name: Create Test Summary
       uses: test-summary/action@v2.0
       if: always()
       with:
         paths: reports/*.xml
 
-    - name: Upload Artifacts
-      uses: actions/upload-artifact@v3
+    - name: Upload Screenshots on Failure
+      uses: actions/upload-artifact@v4
       if: failure()
       with:
         name: test-screenshots
