@@ -8,13 +8,16 @@ const {
 } = require("./utils/selectors");
 require("dotenv").config();
 
+const userPhone = process.env.PLAYWRIGHT_USER;
+const password = process.env.PLAYWRIGHT_PASS;
+
 async function login(page) {
   // 1. Go to the login page
   await page.goto(process.env.BASE_URL || 'https://animated-gingersnap-8cf7f2.netlify.app/');
 
   // 2. Fill in credentials
-  await page.fill(usernameInput, process.env.PLAYWRIGHT_USER || '');
-  await page.fill(passwordInput, process.env.PLAYWRIGHT_PASS || '');
+  await page.fill(usernameInput, userPhone || '');
+  await page.fill(passwordInput, password || '');
 
   // 3. Click the login button
   await page.click(loginButton);
