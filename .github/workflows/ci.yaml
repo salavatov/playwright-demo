@@ -36,7 +36,10 @@ jobs:
 
     - name: Generate Feature File
       run: node generateFeature.js
-
+      
+    - name: Debug Environment Variables
+      run: cat .env
+    
     - name: Run Cucumber Tests
       run: npx cucumber-js
       env:
