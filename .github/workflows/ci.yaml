@@ -49,8 +49,8 @@ jobs:
           echo "Testing BASE_URL: ${{ secrets.BASE_URL }}"
           curl -I ${{ secrets.BASE_URL }}
 
-      - name: Install Playwrite
-        run: npx playwrite install
+      - name: Install Playwright
+        run: npx playwright install
 
       - name: Run Cucumber Tests
         run: npx cucumber-js --format json:reports/cucumber-report.json
