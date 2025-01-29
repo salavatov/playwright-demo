@@ -20,7 +20,13 @@ jobs:
 
     - name: Write the .env file
       run: |
-          echo '${{ secrets.PLAYWRIGHT_ENV }}' > .env
+          echo '${{ secrets.PLAYWRIGHT_ENV }}' | tr '\r' '\n' > .env
+
+    - name: Debug Environment Variables
+      run: cat .env
+
+    - name: Load Environment Variables from .env
+      run: export $(grep -v '^#' .env | xargs)
 
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v3
@@ -36,12 +42,6 @@ jobs:
 
     - name: Generate Feature File
       run: node generateFeature.js
-      
-    - name: Debug Environment Variables
-      run: cat .env
-    
-    - name: Load Environment Variables from .env
-      run: export $(grep -v '^#' .env | xargs)
     
     - name: Run Cucumber Tests
       run: npx cucumber-js
