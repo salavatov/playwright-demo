@@ -97,7 +97,7 @@ npx cucumber-js
 
 ### 2️⃣ Run Tests with Allure Report
 ```bash
-npx cucumber-js --format json:./allure-results/results.json
+npm run test:allure
 npx allure generate ./allure-results --clean
 npx allure open ./allure-report
 ```
@@ -114,8 +114,8 @@ USERNAME=tester PASSWORD=secret npx cucumber-js
 ```
 Or on **PowerShell**:
 ```powershell
-$env:USERNAME="tester"
-$env:PASSWORD="secret"
+$env:USERNAME="******"
+$env:PASSWORD="******"
 npx cucumber-js
 ```
 
