@@ -44,17 +44,12 @@ yarn init -y
 ```
 This creates a basic **`package.json`**.
 
-### 3️⃣ Install Dependencies
+### 4️⃣ Install dotenv for Environment Variables
+To keep credentials secure, install `dotenv`:
 ```bash
-npm install
+npm install dotenv --save
 ```
-Or:
-```bash
-yarn install
-```
-This fetches **`@cucumber/cucumber`**, **`@playwright/test`**, and other required libraries.
-
-### 4️⃣ Create a `.env` (Optional but Recommended)
+Then, create a `.env` file and add:
 ```bash
 # .env
 PLAYWRIGHT_USER=********
@@ -93,34 +88,38 @@ gherkin-playwright-demo/
 
 ## 🔥 How to Run Tests
 
-### 1️⃣ Using a `cucumber.js` Config
+### 1️⃣ Run Tests with Cucumber
 ```bash
 npx cucumber-js
 ```
 - Looks for `.feature` files in **`features/`**
 - Loads step definitions in **`steps/`**
 
-### 2️⃣ Without Config (Manual Flags)
+### 2️⃣ Run Tests with Allure Report
 ```bash
-npx cucumber-js \
-  --require steps/hooks.js \
-  --require steps/tasks.steps.js \
-  features/tasks.feature
+npx cucumber-js --format json:./allure-results/results.json
+npx allure generate ./allure-results --clean
+npx allure open ./allure-report
 ```
 
-### 3️⃣ Setting Environment Variables
+### 3️⃣ Run Playwright Tests Without Gherkin
+```bash
+npx playwright test
+```
+
+### 4️⃣ Setting Environment Variables
 By default, `.env` is loaded. Override or set them inline:
 ```bash
-PLAYWRIGHT_USER=******* PASSWORD=****** npx cucumber-js
+USERNAME=tester PASSWORD=secret npx cucumber-js
 ```
 Or on **PowerShell**:
 ```powershell
-$env:PLAYWRIGHT_USER="******"
-$env:PLAYWRIGHT_PASS="******"
+$env:USERNAME="tester"
+$env:PASSWORD="secret"
 npx cucumber-js
 ```
 
-### 4️⃣ Running in Headless vs. Headed Mode
+### 5️⃣ Running in Headless vs. Headed Mode
 In **`hooks.js`**:
 ```js
 this.browser = await chromium.launch({ headless: true });
@@ -129,22 +128,18 @@ this.browser = await chromium.launch({ headless: true });
 
 ---
 
+
 ## 📊 Generating Reports (Allure Example)
 
-1️⃣ **Install** the Allure Reporter:
+Allure reporting is already configured via **package.json** scripts. To use it:
+
+1️⃣ **Run Tests with Allure Output**:
 ```bash
-npm install --save-dev allure-playwright
+npm run test:allure
 ```
-2️⃣ **Add** to your `package.json` scripts:
-```jsonc
-{
-  "scripts": {
-    "test": "npx cucumber-js",
-    "test:allure": "npx cucumber-js --format json:./allure-results/results.json"
-  }
-}
-```
-3️⃣ **Generate & Open** the Allure Report:
+This will generate a JSON report in `./allure-results`.
+
+2️⃣ **Generate & Open Allure Report**:
 ```bash
 npx allure generate ./allure-results --clean
 npx allure open ./allure-report
