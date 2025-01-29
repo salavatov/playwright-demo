@@ -30,7 +30,6 @@ logs/
 
 # Ignore dependency lock files (if using Yarn or npm)
 yarn.lock
-package-lock.json
 
 # Ignore OS-specific files
 .DS_Store
