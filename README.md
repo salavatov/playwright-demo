@@ -88,18 +88,17 @@ gherkin-playwright-demo/
 
 ## 🔥 How to Run Tests
 
-### 1️⃣ Run Tests with Cucumber
+### 1️⃣ Run the generateFeature.js script, which automatically generates a .feature file for Cucumber using test data from a JSON file.
 ```bash
-npx cucumber-js
+node generateFeature.js
 ```
-- Looks for `.feature` files in **`features/`**
-- Loads step definitions in **`steps/`**
-
 ### 2️⃣ Run Tests with Allure Report
 ```bash
 npx cucumber-js
 allure serve allure-results
 ```
+- Looks for `.feature` files in **`features/`**
+- Loads step definitions in **`steps/`**
 
 ### 3️⃣ Run Playwright Tests Without Gherkin
 ```bash
