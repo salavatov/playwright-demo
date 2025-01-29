@@ -30,8 +30,8 @@ Together, these tools provide a **clean**, **data-driven** approach to verifying
 
 ### 1️⃣ Clone the Repository
 ```bash
-git clone https://github.com/your-org/gherkin-playwright-demo.git
-cd gherkin-playwright-demo
+git clone https://github.com/Nadzey/playwright-demo.git
+cd playwright-demo
 ```
 
 ### 2️⃣ Initialize the Project (If Needed)
