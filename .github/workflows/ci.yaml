@@ -27,8 +27,8 @@ jobs:
     - name: Install dependencies
       run: npm ci
 
-    - name: Create screenshots directory
-      run: mkdir -p ./screenshots
+    - name: Ensure reports and screenshots directories exist
+      run: mkdir -p reports screenshots
 
     - name: Generate Feature File
       run: node generateFeature.js
@@ -53,9 +53,9 @@ jobs:
       with:
         paths: reports/*.xml
 
-    - name: Upload Screenshots on Failure
+    - name: Upload Screenshots
       uses: actions/upload-artifact@v4
-      if: failure()
+      if: always()
       with:
         name: test-screenshots
         path: ./screenshots

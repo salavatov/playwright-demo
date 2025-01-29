@@ -6,7 +6,10 @@ const {
   webApplicationButton,
   logoutText,
 } = require("./utils/selectors");
-require("dotenv").config();
+
+if (!process.env.PLAYWRIGHT_USER || !process.env.PLAYWRIGHT_PASS) {
+  require("dotenv").config();
+}
 
 const userPhone = process.env.PLAYWRIGHT_USER;
 const password = process.env.PLAYWRIGHT_PASS;
