@@ -81,6 +81,7 @@ gherkin-playwright-demo/
 ├── cucumber.js              # (Optional) Cucumber config
 ├── playwright.config.js     # Playwright config (if needed)
 ├── package.json
+├── generateFeature.js
 └── README.md
 ```
 
